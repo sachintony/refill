@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Vehicles</title>
+</head>
+<body>
+    <h1>Vehicle Registration</h1>
+    <form action="/register_vehicles" method="post" id="vehicleForm">
+
+        <!-- Vehicle Number: Alphanumeric and should have a fixed length -->
+        <label for="vehicle_number">Vehicle Number:</label>
+        <input type="text" id="vehicle_number" name="vehicle_number"
+               pattern="[A-Za-z0-9]{6,10}" title="Vehicle number should be 6-10 alphanumeric characters" required><br>
+
+        <!-- Chassis Number: Alphanumeric and should have a fixed length -->
+        <label for="chassis_number">Chassis Number:</label>
+        <input type="text" id="chassis_number" name="chassis_number"
+               pattern="[A-Za-z0-9]{17}" title="Chassis number must be exactly 17 alphanumeric characters" required><br>
+
+        <!-- Vehicle Type -->
+        <label for="vehicle_type">Vehicle Type:</label>
+        <input type="text" id="vehicle_type" name="vehicle_type" required><br>
+
+        <!-- Fuel Type -->
+        <label for="fuel_type">Fuel Type:</label>
+        <input type="text" id="fuel_type" name="fuel_type" required><br>
+
+        <!-- Vehicle Make and Model -->
+        <label for="vehicle_make_and_model">Vehicle Make and Model:</label>
+        <input type="text" id="vehicle_make_and_model" name="vehicle_make_and_model" required><br>
+
+        <!-- Vehicle Color -->
+        <label for="vehicle_color">Vehicle Color:</label>
+        <input type="text" id="vehicle_color" name="vehicle_color" required><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        // JavaScript for additional custom validation if needed
+        document.getElementById('vehicleForm').addEventListener('submit', function(event) {
+            const vehicleNumber = document.getElementById('vehicle_number').value;
+            const chassisNumber = document.getElementById('chassis_number').value;
+
+            // Example of additional custom validation: check if vehicle and chassis numbers are not the same
+            if (vehicleNumber === chassisNumber) {
+                alert("Vehicle number and chassis number should not be the same.");
+                event.preventDefault();  // Prevent form submission
+            }
+        });
+    </script>
+</body>
+</html>

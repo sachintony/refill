@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Users</title>
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form action="/register_users" method="post" id="userForm">
+
+        <!-- First Name: Required and should only contain letters -->
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" pattern="[A-Za-z]+"
+               title="First name should only contain letters" required><br>
+
+        <!-- Last Name: Required and should only contain letters -->
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" pattern="[A-Za-z]+"
+               title="Last name should only contain letters" required><br>
+
+        <!-- Mobile Number: Required and must be exactly 10 digits -->
+        <label for="mobile_number">Mobile Number:</label>
+        <input type="text" id="mobile_number" name="mobile_number" pattern="\d{10}"
+               title="Mobile number must be exactly 10 digits" required><br>
+
+        <!-- Aadhaar Card Number: Required and must be exactly 12 digits -->
+        <label for="aadhaar_card_number">Aadhaar Card Number:</label>
+        <input type="text" id="aadhaar_card_number" name="aadhaar_card_number" pattern="\d{12}"
+               title="Aadhaar card number must be exactly 12 digits" required><br>
+
+        <!-- Address: Optional -->
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Next</button>
+    </form>
+
+    <script>
+        // JavaScript for additional validation (if required)
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            const mobileNumber = document.getElementById('mobile_number').value;
+            const aadhaarCardNumber = document.getElementById('aadhaar_card_number').value;
+
+            // Ensure mobile number and Aadhaar card number are not the same
+            if (mobileNumber === aadhaarCardNumber) {
+                alert("Mobile number and Aadhaar card number cannot be the same.");
+                event.preventDefault();  // Prevent form submission
+            }
+
+            // Add any additional custom validation logic here, if needed
+        });
+    </script>
+</body>
+</html>
